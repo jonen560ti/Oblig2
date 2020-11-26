@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Test Suite</title>
+    <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.12.0.css">
+    <script src="https://code.jquery.com/qunit/qunit-2.12.0.js"></script>
+    <script src="ControllerTest.js" defer></script>
+  </head>
+  <body>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+    <script>
+
+
+let barHeights;
+let chosenBar;
+let inputValue;
+let buttonState;
+let editButton;
+let removeButton;
+
+function show() {
+
+};
+
+
+QUnit.test("CheckSelectBar", function(assert) {
+            selectBar(5);
+            let actual = chosenBar;
+            let expected = 5;
+            assert.deepEqual(actual,expected, "Correct bar selected?");
+        });
+
+QUnit.test("CheckEditBar", function(assert) {
+            chosenBar = 3;
+            barHeights = [4, 2, 4, 2];
+            inputValue = 6;
+            editBar();
+            let expected = 6;
+            let actual = barHeights[chosenBar-1];
+            assert.deepEqual(actual, expected, "Correct bar edited?");
+        });
+
+
+        QUnit.test("CheckAddBar", function(assert) {
+            barHeights = [4, 2, 4, 2];
+            inputValue = 6;
+            addBar();
+
+            let actual = barHeights[barHeights.length - 1];
+            let expected = inputValue;
+            assert.deepEqual(actual,expected, "Correct bar added?");
+        });
+
+        QUnit.test("CheckDeleteBar", function(assert) {
+            barHeights = [4, 2, 4, 2];
+            chosenBar = 3;
+            removeBar();
+            let actual = barHeights;
+            let expected = [4,2,2];
+            assert.deepEqual(actual,expected, "Correct bar deleted?");
+        });
+
+
+</script>
