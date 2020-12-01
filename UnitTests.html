@@ -49,8 +49,8 @@ QUnit.test("CheckEditBar", function(assert) {
             inputValue = 6;
             addBar();
 
-            let actual = barHeights[barHeights.length - 1];
-            let expected = inputValue;
+            let actual = barHeights;
+            let expected = [4, 2, 4, 2, 6];
             assert.deepEqual(actual,expected, "Correct bar added?");
         });
 
